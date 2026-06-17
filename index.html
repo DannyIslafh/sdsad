@@ -21,6 +21,12 @@
         text-align: center;
     }
 
+    .header-logo {
+        max-width: 150px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+    }
+
     .container {
         padding: 20px;
         max-width: 1200px;
@@ -34,6 +40,52 @@
         border-radius: 10px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
+
+    .section-img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-top: 15px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* --- New Styles for Group Members --- */
+    .member-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 15px;
+    }
+
+    .member-card {
+        background: #f9fbff;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .member-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%; /* Makes the image a circle */
+        object-fit: cover;
+        margin-bottom: 10px;
+        border: 3px solid #2a5298; /* Adds a themed border */
+    }
+
+    .member-card h3 {
+        margin: 5px 0;
+        color: #1e3c72;
+        font-size: 1.1em;
+    }
+
+    .member-card p {
+        margin: 0;
+        color: #666;
+        font-size: 0.9em;
+    }
+    /* ------------------------------------ */
 
     .cards {
         display: grid;
@@ -55,7 +107,6 @@
         color: #1e3c72;
     }
 
-    /* New styles for the Equipment section */
     .equip-cards {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -105,7 +156,7 @@
     }
 
     @media(max-width: 768px){
-        .cards, .charts, .equip-cards {
+        .cards, .charts, .equip-cards, .member-cards {
             grid-template-columns: 1fr;
         }
     }
@@ -115,6 +166,7 @@
 <body>
 
 <header>
+    <img src="https://via.placeholder.com/150x80?text=Your+Logo" alt="Project Logo" class="header-logo">
     <h1>Welding Process Data Dashboard</h1>
     <p>Analysis of Electrical Welding Parameters</p>
 </header>
@@ -123,11 +175,25 @@
 
     <div class="section">
         <h2>Group Members</h2>
-        <ul>
-            <li><strong>Nur Elya</strong> - B142410532</li>
-            <li><strong>Nadhirah Wahidah</strong> - B142410505</li>
-            <li><strong>Ridzuan Shah</strong> - B14241012312</li>
-        </ul>
+        <div class="member-cards">
+            <div class="member-card">
+                <img src="elya.png" alt="Nur Elya" class="member-img">
+                <h3>Nur Elya</h3>
+                <p>B142410532</p>
+            </div>
+            
+            <div class="member-card">
+                <img src="nad.jpg" alt="Nadhirah Wahidah" class="member-img">
+                <h3>Nadhirah Wahidah</h3>
+                <p>B142410505</p>
+            </div>
+            
+            <div class="member-card">
+                <img src="wan.jpg" alt="Ridzuan Shah" class="member-img">
+                <h3>Ridzuan Shah</h3>
+                <p>B14241012312</p>
+            </div>
+        </div>
     </div>
 
     <div class="section">
@@ -169,6 +235,7 @@
                 <p>Tracks sub-micron linear displacement (mm) to verify final structural geometric shrinkage distortions after cooling.</p>
             </div>
         </div>
+        <img src="https://via.placeholder.com/800x300?text=Diagnostic+Equipment" alt="Diagnostic Equipment" class="section-img">
     </div>
 
     <div class="section">
