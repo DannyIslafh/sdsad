@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Welding Data Dashboard</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #f4f6f9;
+        color: #333;
+    }
+
+    header {
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
+        color: white;
+        padding: 25px;
+        text-align: center;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .section {
+        background: white;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    .card {
+        background: #ffffff;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .card h3 {
+        margin: 0;
+        color: #1e3c72;
+    }
+
+    /* New styles for the Equipment section */
+    .equip-cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    .equip-card {
+        background: #f9fbff;
+        padding: 20px;
+        border-left: 5px solid #2a5298;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .equip-card h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: #1e3c72;
+        font-size: 1.1em;
+    }
+
+    .equip-card h3 span {
+        color: #888;
+        font-weight: bold;
+        margin-right: 8px;
+    }
+    
+    .equip-card p {
+        margin: 0;
+        line-height: 1.5;
+        font-size: 0.95em;
+    }
+
+    canvas {
+        max-width: 100%;
+    }
+
+    .charts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    ul {
+        line-height: 1.8;
+    }
+
+    @media(max-width: 768px){
+        .cards, .charts, .equip-cards {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Welding Process Data Dashboard</h1>
+    <p>Analysis of Electrical Welding Parameters</p>
+</header>
+
+<div class="container">
+
+    <div class="section">
+        <h2>Group Members</h2>
+        <ul>
+            <li><strong>Nur Elya</strong> - B142410532</li>
+            <li><strong>Nadhirah Wahidah</strong> - B142410505</li>
+            <li><strong>Ridzuan Shah</strong> - B14241012312</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Introduction</h2>
+        <p>
+            This dashboard presents an analysis of welding process data including current, voltage,
+            power, heat input, resistance, and voltage drop. The purpose is to understand electrical
+            behavior in welding operations and evaluate performance trends.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Objective</h2>
+        <ul>
+            <li>To analyze welding electrical parameters</li>
+            <li>To study relationship between current and power</li>
+            <li>To evaluate heat input variation</li>
+            <li>To visualize data for better decision making</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Industrial Diagnostic Equipment & Sensors</h2>
+        <div class="equip-cards">
+            <div class="equip-card">
+                <h3><span>01 /</span> Clamp Meter</h3>
+                <p>Measures welding current (A) and arc voltage (V) non-intrusively during active arc state for power computations.</p>
+            </div>
+            <div class="equip-card">
+                <h3><span>02 /</span> Thermal Camera</h3>
+                <p>Captures infrared radiation to map surface temperatures of the weld pool and Heat Affected Zone (HAZ) at ε=0.95.</p>
+            </div>
+            <div class="equip-card">
+                <h3><span>03 /</span> Arc Welding Analyzer</h3>
+                <p>Detects dynamic physical reaction loads (N) resulting from expanding base metal under intense arc constraints.</p>
+            </div>
+            <div class="equip-card">
+                <h3><span>04 /</span> LVDT Sensor</h3>
+                <p>Tracks sub-micron linear displacement (mm) to verify final structural geometric shrinkage distortions after cooling.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Key Statistics</h2>
+
+        <div class="cards">
+            <div class="card">
+                <h3 id="avgCurrent">0</h3>
+                <p>Avg Current (A)</p>
+            </div>
+
+            <div class="card">
+                <h3 id="avgVoltage">0</h3>
+                <p>Avg Voltage (V)</p>
+            </div>
+
+            <div class="card">
+                <h3 id="avgPower">0</h3>
+                <p>Avg Power (W)</p>
+            </div>
+
+            <div class="card">
+                <h3 id="avgHeat">0</h3>
+                <p>Avg Heat Input</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Data Visualization</h2>
+
+        <div class="charts">
+            <canvas id="chart1"></canvas>
+            <canvas id="chart2"></canvas>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Key Findings</h2>
+        <ul>
+            <li>Higher current increases power output significantly</li>
+            <li>Voltage remains relatively stable across samples</li>
+            <li>Heat input increases proportionally with power</li>
+            <li>Resistance values slightly decrease at higher current</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Conclusion</h2>
+        <p>
+            The welding dataset shows a clear relationship between electrical parameters.
+            Increasing current leads to higher power and heat input, which directly affects welding performance.
+            This analysis helps optimize welding conditions for better efficiency and stability.
+        </p>
+    </div>
+
+</div>
+
+<script>
+/* =========================
+   SAMPLE DATA (EASY EDIT)
+========================= */
+const data = [
+ {i:1, c:185.2, v:24.8, p:4592.96, h:1.722},
+ {i:2, c:192.6, v:25.1, p:4834.26, h:1.812},
+ {i:3, c:178.4, v:24.2, p:4317.28, h:1.618},
+ {i:4, c:205.8, v:25.9, p:5330.22, h:1.998},
+ {i:5, c:168.3, v:23.7, p:3988.71, h:1.495},
+ {i:6, c:195.2, v:25.3, p:4938.56, h:1.851},
+ {i:7, c:210.4, v:26.1, p:5491.44, h:2.059},
+ {i:8, c:182.7, v:24.5, p:4476.15, h:1.678},
+ {i:9, c:220.1, v:26.7, p:5876.67, h:2.203},
+ {i:10, c:188.5, v:24.7, p:4655.95, h:1.745}
+];
+
+/* =========================
+   CALCULATIONS
+========================= */
+let totalC=0, totalV=0, totalP=0, totalH=0;
+
+data.forEach(d=>{
+    totalC += d.c;
+    totalV += d.v;
+    totalP += d.p;
+    totalH += d.h;
+});
+
+document.getElementById("avgCurrent").innerText = (totalC/data.length).toFixed(2);
+document.getElementById("avgVoltage").innerText = (totalV/data.length).toFixed(2);
+document.getElementById("avgPower").innerText = (totalP/data.length).toFixed(2);
+document.getElementById("avgHeat").innerText = (totalH/data.length).toFixed(3);
+
+/* =========================
+   CHART 1: Current vs Power
+========================= */
+new Chart(document.getElementById("chart1"), {
+    type: "line",
+    data: {
+        labels: data.map(d => "S" + d.i),
+        datasets: [{
+            label: "Current (A)",
+            data: data.map(d => d.c),
+            borderColor: "blue",
+            fill: false
+        },
+        {
+            label: "Power (W)",
+            data: data.map(d => d.p),
+            borderColor: "red",
+            fill: false
+        }]
+    }
+});
+
+/* =========================
+   CHART 2: Heat Input Trend
+========================= */
+new Chart(document.getElementById("chart2"), {
+    type: "bar",
+    data: {
+        labels: data.map(d => "S" + d.i),
+        datasets: [{
+            label: "Heat Input",
+            data: data.map(d => d.h),
+            backgroundColor: "green"
+        }]
+    }
+});
+</script>
+
+</body>
+</html>
