@@ -44,6 +44,7 @@
         justify-content: center;
     }
 
+    /* Standard cards (for charts/layout) */
     .card {
         flex: 1;
         min-width: 250px;
@@ -52,6 +53,19 @@
         border-radius: 10px;
         text-align: center;
         background: #fdfdfd;
+    }
+
+    /* Specific styles for the profile cards to make white text visible */
+    .profile-card {
+        flex: 1;
+        min-width: 250px;
+        padding: 15px;
+        border: 1px solid #c4d1d0;
+        border-radius: 10px;
+        text-align: center;
+        background: #2d3b3c; /* Dark background so white text pops */
+        color: white; /* Make the tulisan white */
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
 
     .chart-container {
@@ -97,7 +111,7 @@
         object-fit: cover;
         border-radius: 50%;
         margin-bottom: 10px;
-        border: 3px solid #5a7d7c;
+        border: 3px solid #e8ecec;
     }
 </style>
 </head>
@@ -111,17 +125,17 @@
 
     <div class="row">
 
-        <div class="card">
+        <div class="profile-card">
             <img src="elya.jpg" alt="Member 1">
             <p><b>NUR ELYA ATIQAH BINTI SAHARIL</b><br>(B142410532)<br>Electrical Engineer</p>
         </div>
 
-        <div class="card">
+        <div class="profile-card">
             <img src="nad.jpg" alt="Member 2">
             <p><b>NADHIRAH WAHIDAH BINTI ARMAN</b><br>(B142410505)<br>Thermal Analyst</p>
         </div>
 
-        <div class="card">
+        <div class="profile-card">
             <img src="wan.jpg" alt="Member 3">
             <p><b>MUHAMAD RIDZUAN SHAH</b><br>(B1422410514)<br>Mechanical Analyst</p>
         </div>
