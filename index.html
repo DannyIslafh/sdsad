@@ -2,173 +2,71 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Welding Data Dashboard</title>
+<title>GMAW Real-Time Quality Monitoring Dashboard</title>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
-    body {
+    body{
         font-family: Arial, sans-serif;
-        margin: 0;
-        background: #f4f6f9;
-        color: #333;
+        margin:0;
+        background:#f4f6f9;
     }
 
-    header {
-        background: linear-gradient(135deg, #1e3c72, #2a5298);
-        color: white;
-        padding: 25px;
-        text-align: center;
+    header{
+        background:#0d1b2a;
+        color:white;
+        padding:20px;
+        text-align:center;
     }
 
-    .header-logo {
-        max-width: 150px;
-        margin-bottom: 10px;
-        border-radius: 8px;
+    section{
+        background:white;
+        margin:15px;
+        padding:15px;
+        border-radius:10px;
+        box-shadow:0 2px 5px rgba(0,0,0,0.1);
     }
 
-    .container {
-        padding: 20px;
-        max-width: 1200px;
-        margin: auto;
+    .row{
+        display:flex;
+        gap:10px;
+        flex-wrap:wrap;
     }
 
-    .section {
-        background: white;
-        padding: 20px;
-        margin-bottom: 20px;
-        border-radius: 10px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    .card{
+        flex:1;
+        min-width:250px;
+        padding:10px;
+        border:1px solid #ddd;
+        border-radius:10px;
     }
 
-    .section-img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-        margin-top: 15px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    table{
+        width:100%;
+        border-collapse:collapse;
     }
 
-    /* --- New Styles for Group Members --- */
-    .member-cards {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-        margin-top: 15px;
+    table, th, td{
+        border:1px solid #ccc;
     }
 
-    .member-card {
-        background: #f9fbff;
-        padding: 20px;
-        border-radius: 10px;
-        text-align: center;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    th, td{
+        padding:8px;
+        text-align:center;
     }
 
-    .member-img {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%; /* Makes the image a circle */
-        object-fit: cover;
-        margin-bottom: 10px;
-        border: 3px solid #2a5298; /* Adds a themed border */
+    footer{
+        text-align:center;
+        padding:15px;
+        background:#0d1b2a;
+        color:white;
     }
 
-    .member-card h3 {
-        margin: 5px 0;
-        color: #1e3c72;
-        font-size: 1.1em;
-    }
-
-    .member-card p {
-        margin: 0;
-        color: #666;
-        font-size: 0.9em;
-    }
-    /* ------------------------------------ */
-
-    .cards {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 15px;
-        margin-top: 10px;
-    }
-
-    .card {
-        background: #ffffff;
-        padding: 15px;
-        border-radius: 10px;
-        text-align: center;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-
-    .card h3 {
-        margin: 0;
-        color: #1e3c72;
-    }
-
-    .equip-cards {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-        margin-top: 10px;
-    }
-
-    .equip-card {
-        background: #f9fbff;
-        padding: 20px;
-        border-left: 5px solid #2a5298;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-
-    /* --- New Style for Equipment Images --- */
-    .equip-img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 6px;
-        margin-bottom: 15px;
-        border: 1px solid #ddd;
-    }
-
-    .equip-card h3 {
-        margin-top: 0;
-        margin-bottom: 10px;
-        color: #1e3c72;
-        font-size: 1.1em;
-    }
-
-    .equip-card h3 span {
-        color: #888;
-        font-weight: bold;
-        margin-right: 8px;
-    }
-    
-    .equip-card p {
-        margin: 0;
-        line-height: 1.5;
-        font-size: 0.95em;
-    }
-
-    canvas {
-        max-width: 100%;
-    }
-
-    .charts {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-    }
-
-    ul {
-        line-height: 1.8;
-    }
-
-    @media(max-width: 768px){
-        .cards, .charts, .equip-cards, .member-cards {
-            grid-template-columns: 1fr;
-        }
+    img{
+        width:100%;
+        max-width:250px;
+        border-radius:10px;
     }
 </style>
 </head>
@@ -176,209 +74,292 @@
 <body>
 
 <header>
-    <img src="https://via.placeholder.com/150x80?text=Your+Logo" alt="Project Logo" class="header-logo">
-    <h1>Welding Process Data Dashboard</h1>
-    <p>Analysis of Electrical Welding Parameters</p>
+    <h1>GMAW REAL-TIME QUALITY MONITORING SYSTEM</h1>
+    <h3>BMIK 2124 ELECTRICAL WELDING EQUIPMENT</h3>
+    <p>Assignment Dashboard</p>
+
+    <div class="row">
+
+        <div class="card">
+            <img src="elya.jpg" alt="Member 1">
+            <p><b>NUR ELYA ATIQAH BINTI SAHARIL</b><br>(B142410532)<br>Electrical Engineer</p>
+        </div>
+
+        <div class="card">
+            <img src="ira.jpg" alt="Member 2">
+            <p><b>NADHIRAH WAHIDAH BINTI ARMAN</b><br>(B142410505)<br>Thermal Analyst</p>
+        </div>
+
+        <div class="card">
+            <img src="wan.jpg" alt="Member 3">
+            <p><b>MUHAMAD RIDZUAN SHAH</b><br>(B1422410514)<br>Mechanical Analyst</p>
+        </div>
+
+    </div>
 </header>
 
-<div class="container">
 
-    <div class="section">
-        <h2>Group Members</h2>
-        <div class="member-cards">
-            <div class="member-card">
-                <img src="elya.jpg" alt="Nur Elya" class="member-img">
-                <h3>Nur Elya</h3>
-                <p>B142410532</p>
-            </div>
-            
-            <div class="member-card">
-                <img src="nad.jpg" alt="Nadhirah Wahidah" class="member-img">
-                <h3>Nadhirah Wahidah</h3>
-                <p>B142410505</p>
-            </div>
-            
-            <div class="member-card">
-                <img src="wan.jpg" alt="Ridzuan Shah" class="member-img">
-                <h3>Ridzuan Shah</h3>
-                <p>B14241012312</p>
-            </div>
-        </div>
+<section>
+    <h2>Data Source Panel (30 Samples)</h2>
+
+    <p>
+        The dataset consists of 30 GMAW welding samples containing
+        current, voltage, power, heat input, resistance and voltage drop measurements.
+    </p>
+
+    <div style="
+        overflow-x:auto;
+        overflow-y:auto;
+        max-height:450px;
+        border:1px solid #ccc;
+        border-radius:10px;
+    ">
+
+    <table>
+        <thead style="position:sticky; top:0; background:#0d1b2a; color:white;">
+            <tr>
+                <th>Sample</th>
+                <th>Current (A)</th>
+                <th>Voltage (V)</th>
+                <th>Power (W)</th>
+                <th>Heat Input (kJ/mm)</th>
+                <th>Resistance (Ω)</th>
+                <th>Voltage Drop (V)</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr><td>1</td><td>185.2</td><td>24.8</td><td>4592.96</td><td>1.722</td><td>0.133</td><td>50.72</td></tr>
+            <tr><td>2</td><td>192.6</td><td>25.1</td><td>4834.26</td><td>1.812</td><td>0.130</td><td>50.42</td></tr>
+            <tr><td>3</td><td>178.4</td><td>24.2</td><td>4317.28</td><td>1.618</td><td>0.135</td><td>51.32</td></tr>
+            <tr><td>4</td><td>205.8</td><td>25.9</td><td>5330.22</td><td>1.998</td><td>0.125</td><td>49.62</td></tr>
+            <tr><td>5</td><td>168.3</td><td>23.7</td><td>3988.71</td><td>1.495</td><td>0.140</td><td>51.82</td></tr>
+            <tr><td>6</td><td>195.2</td><td>25.3</td><td>4938.56</td><td>1.851</td><td>0.129</td><td>50.22</td></tr>
+            <tr><td>7</td><td>210.4</td><td>26.1</td><td>5491.44</td><td>2.059</td><td>0.124</td><td>49.42</td></tr>
+            <tr><td>8</td><td>182.7</td><td>24.5</td><td>4476.15</td><td>1.678</td><td>0.134</td><td>51.02</td></tr>
+            <tr><td>9</td><td>220.1</td><td>26.7</td><td>5876.67</td><td>2.203</td><td>0.121</td><td>48.82</td></tr>
+            <tr><td>10</td><td>188.5</td><td>24.7</td><td>4655.95</td><td>1.745</td><td>0.131</td><td>50.82</td></tr>
+            <tr><td>11</td><td>215.3</td><td>26.5</td><td>5705.45</td><td>2.139</td><td>0.123</td><td>49.02</td></tr>
+            <tr><td>12</td><td>175.2</td><td>23.9</td><td>4187.28</td><td>1.570</td><td>0.136</td><td>51.62</td></tr>
+            <tr><td>13</td><td>200.6</td><td>25.6</td><td>5135.36</td><td>1.925</td><td>0.127</td><td>49.92</td></tr>
+            <tr><td>14</td><td>165.8</td><td>23.4</td><td>3879.72</td><td>1.454</td><td>0.141</td><td>52.12</td></tr>
+            <tr><td>15</td><td>225.4</td><td>27.0</td><td>6085.80</td><td>2.282</td><td>0.119</td><td>48.52</td></tr>
+            <tr><td>16</td><td>212.5</td><td>26.3</td><td>5588.75</td><td>2.095</td><td>0.123</td><td>49.22</td></tr>
+            <tr><td>17</td><td>198.3</td><td>25.4</td><td>5036.82</td><td>1.888</td><td>0.128</td><td>50.12</td></tr>
+            <tr><td>18</td><td>225.7</td><td>27.1</td><td>6116.47</td><td>2.293</td><td>0.120</td><td>48.42</td></tr>
+            <tr><td>19</td><td>189.6</td><td>24.9</td><td>4721.04</td><td>1.770</td><td>0.131</td><td>50.62</td></tr>
+            <tr><td>20</td><td>235.2</td><td>28.0</td><td>6585.60</td><td>2.469</td><td>0.119</td><td>47.52</td></tr>
+            <tr><td>21</td><td>175.8</td><td>24.0</td><td>4219.20</td><td>1.582</td><td>0.136</td><td>51.52</td></tr>
+            <tr><td>22</td><td>220.4</td><td>26.8</td><td>5906.72</td><td>2.215</td><td>0.121</td><td>48.72</td></tr>
+            <tr><td>23</td><td>195.5</td><td>25.3</td><td>4946.15</td><td>1.854</td><td>0.129</td><td>50.22</td></tr>
+            <tr><td>24</td><td>208.9</td><td>26.0</td><td>5431.40</td><td>2.036</td><td>0.124</td><td>49.52</td></tr>
+            <tr><td>25</td><td>170.2</td><td>23.8</td><td>4050.76</td><td>1.519</td><td>0.139</td><td>51.72</td></tr>
+            <tr><td>26</td><td>230.8</td><td>27.5</td><td>6347.00</td><td>2.380</td><td>0.119</td><td>48.02</td></tr>
+            <tr><td>27</td><td>185.9</td><td>24.8</td><td>4610.32</td><td>1.728</td><td>0.133</td><td>50.72</td></tr>
+            <tr><td>28</td><td>218.3</td><td>26.6</td><td>5806.78</td><td>2.177</td><td>0.121</td><td>48.92</td></tr>
+            <tr><td>29</td><td>195.0</td><td>25.2</td><td>4914.00</td><td>1.842</td><td>0.129</td><td>50.32</td></tr>
+            <tr><td>30</td><td>210.1</td><td>26.2</td><td>5504.62</td><td>2.064</td><td>0.124</td><td>49.32</td></tr>
+        </tbody>
+    </table>
+
+    </div>
+</section>
+<section>
+    <h2>Scatter Diagrams (3 Plots)</h2>
+    <div class="row">
+        <img src="SCVOLTAGE.png" alt="Scatter 1">
+        <img src="SCPOWER.png" alt="Scatter 2">
+        <img src="SCHEAT.png" alt="Scatter 3">
+    </div>
+</section>
+
+
+<section>
+    <h2>Table 2: Temperature Measurements for 25 Samples with Calculated Means and Ranges</h2>
+
+    <div style="
+        overflow-x:auto;
+        overflow-y:auto;
+        max-height:400px;
+        border:1px solid #ccc;
+        border-radius:10px;
+    ">
+
+        <table style="font-size:14px;">
+            <thead style="position:sticky; top:0; background:#0d1b2a; color:white;">
+                <tr>
+                    <th>Sample</th>
+                    <th>Mean (X̄)</th>
+                    <th>Range (R)</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr><td>1</td><td>486.25</td><td>13.5</td></tr>
+                <tr><td>2</td><td>511.00</td><td>9.4</td></tr>
+                <tr><td>3</td><td>470.25</td><td>9.5</td></tr>
+                <tr><td>4</td><td>534.25</td><td>11.5</td></tr>
+                <tr><td>5</td><td>449.37</td><td>6.5</td></tr>
+                <tr><td>6</td><td>498.92</td><td>6.5</td></tr>
+                <tr><td>7</td><td>520.32</td><td>9.3</td></tr>
+                <tr><td>8</td><td>476.25</td><td>7.4</td></tr>
+                <tr><td>9</td><td>506.25</td><td>7.9</td></tr>
+                <tr><td>10</td><td>461.78</td><td>6.4</td></tr>
+                <tr><td>11</td><td>527.62</td><td>9.5</td></tr>
+                <tr><td>12</td><td>491.75</td><td>6.6</td></tr>
+                <tr><td>13</td><td>517.63</td><td>9.7</td></tr>
+                <tr><td>14</td><td>457.58</td><td>9.3</td></tr>
+                <tr><td>15</td><td>509.90</td><td>8.7</td></tr>
+                <tr><td>16</td><td>482.52</td><td>8.5</td></tr>
+                <tr><td>17</td><td>533.12</td><td>9.8</td></tr>
+                <tr><td>18</td><td>467.60</td><td>10.2</td></tr>
+                <tr><td>19</td><td>502.62</td><td>9.1</td></tr>
+                <tr><td>20</td><td>541.78</td><td>7.6</td></tr>
+                <tr><td>21</td><td>477.60</td><td>9.3</td></tr>
+                <tr><td>22</td><td>520.10</td><td>8.7</td></tr>
+                <tr><td>23</td><td>452.55</td><td>7.7</td></tr>
+                <tr><td>24</td><td>497.62</td><td>9.3</td></tr>
+                <tr><td>25</td><td>530.10</td><td>8.7</td></tr>
+            </tbody>
+        </table>
+
+    </div>
+</section>
+
+<section>
+    <h2>Control Charts Construction</h2>
+
+    <div style="text-align:center;">
+        <img
+            src="Construction.jpg"
+            alt="Control Charts Construction"
+            style="max-width:900px; width:100%; border:1px solid #ccc; border-radius:10px;"
+        >
     </div>
 
-    <div class="section">
-        <h2>Introduction</h2>
-        <p>
-            This dashboard presents an analysis of welding process data including current, voltage,
-            power, heat input, resistance, and voltage drop. The purpose is to understand electrical
-            behavior in welding operations and evaluate performance trends.
-        </p>
+    <p style="text-align:center;">
+        Figure: Construction of X-bar and R Control Charts
+    </p>
+</section>
+
+<section>
+    <h2>Table 3 – Load & Displacement Reference Data</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Measurement Point</th>
+                <th>Load (N)</th>
+                <th>Displacement (mm)</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Arc Start</td>
+                <td>125</td>
+                <td>0.02</td>
+            </tr>
+
+            <tr>
+                <td>5 seconds</td>
+                <td>142</td>
+                <td>0.15</td>
+            </tr>
+
+            <tr>
+                <td>10 seconds</td>
+                <td>138</td>
+                <td>0.38</td>
+            </tr>
+
+            <tr>
+                <td>15 seconds</td>
+                <td>145</td>
+                <td>0.62</td>
+            </tr>
+
+            <tr>
+                <td>20 seconds</td>
+                <td>140</td>
+                <td>0.85</td>
+            </tr>
+
+            <tr>
+                <td>Arc Stop</td>
+                <td>135</td>
+                <td>1.02</td>
+            </tr>
+
+            <tr>
+                <td>After cooling (60 s)</td>
+                <td>N/A</td>
+                <td>0.48</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+
+<section>
+    <h2>Load & Displacement Reference Data Chart</h2>
+
+    <div style="text-align:center;">
+        <img
+            src="Load_Displacement_Chart.png"
+            alt="Table 3 Load & Displacement Reference Data Chart"
+            style="max-width:800px; width:100%; border:1px solid #ccc; border-radius:10px;"
+        >
     </div>
 
-    <div class="section">
-        <h2>Objective</h2>
-        <ul>
-            <li>To analyze welding electrical parameters</li>
-            <li>To study relationship between current and power</li>
-            <li>To evaluate heat input variation</li>
-            <li>To visualize data for better decision making</li>
-        </ul>
-    </div>
+    <p style="text-align:center;">
+        Figure: Load and Displacement Trend During Welding Process
+    </p>
+</section>
 
-    <div class="section">
-        <h2>Industrial Diagnostic Equipment & Sensors</h2>
-        <div class="equip-cards">
-            
-            <div class="equip-card">
-                <img src="https://via.placeholder.com/400x200?text=Clamp+Meter" alt="Clamp Meter" class="equip-img">
-                <h3><span>01 /</span> Clamp Meter</h3>
-                <p>Measures welding current (A) and arc voltage (V) non-intrusively during active arc state for power computations.</p>
-            </div>
-            
-            <div class="equip-card">
-                <img src="https://via.placeholder.com/400x200?text=Thermal+Camera" alt="Thermal Camera" class="equip-img">
-                <h3><span>02 /</span> Thermal Camera</h3>
-                <p>Captures infrared radiation to map surface temperatures of the weld pool and Heat Affected Zone (HAZ) at ε=0.95.</p>
-            </div>
-            
-            <div class="equip-card">
-                <img src="https://via.placeholder.com/400x200?text=Welding+Analyzer" alt="Arc Welding Analyzer" class="equip-img">
-                <h3><span>03 /</span> Arc Welding Analyzer</h3>
-                <p>Detects dynamic physical reaction loads (N) resulting from expanding base metal under intense arc constraints.</p>
-            </div>
-            
-            <div class="equip-card">
-                <img src="https://via.placeholder.com/400x200?text=LVDT+Sensor" alt="LVDT Sensor" class="equip-img">
-                <h3><span>04 /</span> LVDT Sensor</h3>
-                <p>Tracks sub-micron linear displacement (mm) to verify final structural geometric shrinkage distortions after cooling.</p>
-            </div>
 
-        </div>
-    </div>
+<section>
+    <h2>Conclusion</h2>
+    <p>
+        The monitoring system successfully integrates electrical and mechanical data analysis for GMAW process optimization.
+        The results show stable trends in welding parameters with acceptable variation across samples.
+    </p>
+</section>
 
-    <div class="section">
-        <h2>Key Statistics</h2>
 
-        <div class="cards">
-            <div class="card">
-                <h3 id="avgCurrent">0</h3>
-                <p>Avg Current (A)</p>
-            </div>
+<footer>
+    <p>GMAW Monitoring System Dashboard | BMIK 2124 Electrical Welding Equipment</p>
+    <p>Recommendations: Improve sensor calibration and increase sample size for better accuracy.</p>
+</footer>
 
-            <div class="card">
-                <h3 id="avgVoltage">0</h3>
-                <p>Avg Voltage (V)</p>
-            </div>
-
-            <div class="card">
-                <h3 id="avgPower">0</h3>
-                <p>Avg Power (W)</p>
-            </div>
-
-            <div class="card">
-                <h3 id="avgHeat">0</h3>
-                <p>Avg Heat Input</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Data Visualization</h2>
-
-        <div class="charts">
-            <canvas id="chart1"></canvas>
-            <canvas id="chart2"></canvas>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Key Findings</h2>
-        <ul>
-            <li>Higher current increases power output significantly</li>
-            <li>Voltage remains relatively stable across samples</li>
-            <li>Heat input increases proportionally with power</li>
-            <li>Resistance values slightly decrease at higher current</li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h2>Conclusion</h2>
-        <p>
-            The welding dataset shows a clear relationship between electrical parameters.
-            Increasing current leads to higher power and heat input, which directly affects welding performance.
-            This analysis helps optimize welding conditions for better efficiency and stability.
-        </p>
-    </div>
-
-</div>
 
 <script>
-/* =========================
-   SAMPLE DATA (EASY EDIT)
-========================= */
-const data = [
- {i:1, c:185.2, v:24.8, p:4592.96, h:1.722},
- {i:2, c:192.6, v:25.1, p:4834.26, h:1.812},
- {i:3, c:178.4, v:24.2, p:4317.28, h:1.618},
- {i:4, c:205.8, v:25.9, p:5330.22, h:1.998},
- {i:5, c:168.3, v:23.7, p:3988.71, h:1.495},
- {i:6, c:195.2, v:25.3, p:4938.56, h:1.851},
- {i:7, c:210.4, v:26.1, p:5491.44, h:2.059},
- {i:8, c:182.7, v:24.5, p:4476.15, h:1.678},
- {i:9, c:220.1, v:26.7, p:5876.67, h:2.203},
- {i:10, c:188.5, v:24.7, p:4655.95, h:1.745}
-];
+const xbar = document.getElementById('xbarChart');
 
-/* =========================
-   CALCULATIONS
-========================= */
-let totalC=0, totalV=0, totalP=0, totalH=0;
-
-data.forEach(d=>{
-    totalC += d.c;
-    totalV += d.v;
-    totalP += d.p;
-    totalH += d.h;
-});
-
-document.getElementById("avgCurrent").innerText = (totalC/data.length).toFixed(2);
-document.getElementById("avgVoltage").innerText = (totalV/data.length).toFixed(2);
-document.getElementById("avgPower").innerText = (totalP/data.length).toFixed(2);
-document.getElementById("avgHeat").innerText = (totalH/data.length).toFixed(3);
-
-/* =========================
-   CHART 1: Current vs Power
-========================= */
-new Chart(document.getElementById("chart1"), {
-    type: "line",
+new Chart(xbar, {
+    type: 'line',
     data: {
-        labels: data.map(d => "S" + d.i),
+        labels: ['1','2','3','4','5'],
         datasets: [{
-            label: "Current (A)",
-            data: data.map(d => d.c),
-            borderColor: "blue",
-            fill: false
-        },
-        {
-            label: "Power (W)",
-            data: data.map(d => d.p),
-            borderColor: "red",
+            label: 'X-bar Chart',
+            data: [121,131,126,141,136],
+            borderColor: 'blue',
             fill: false
         }]
     }
 });
 
-/* =========================
-   CHART 2: Heat Input Trend
-========================= */
-new Chart(document.getElementById("chart2"), {
-    type: "bar",
+const r = document.getElementById('rChart');
+
+new Chart(r, {
+    type: 'line',
     data: {
-        labels: data.map(d => "S" + d.i),
+        labels: ['1','2','3','4','5'],
         datasets: [{
-            label: "Heat Input",
-            data: data.map(d => d.h),
-            backgroundColor: "green"
+            label: 'R Chart',
+            data: [4,4,4,4,4],
+            borderColor: 'red',
+            fill: false
         }]
     }
 });
